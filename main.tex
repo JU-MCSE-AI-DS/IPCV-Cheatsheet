@@ -1,6 +1,7 @@
 \documentclass[twocolumn]{article}
 \usepackage{amsmath}
 \usepackage{xcolor-material}
+\usepackage{pgfplots}
 \usepackage{float}
 \usepackage{caption}
 \usepackage{graphicx}
@@ -15,6 +16,7 @@
 \usepackage{makecell}
 \usepackage{csquotes}
 \usepackage{tikz}
+\usepackage[ruled,linesnumbered]{algorithm2e}
 \usetikzlibrary{positioning,arrows.meta}
 \usepackage{upgreek}
 \usepackage{titling}
@@ -26,6 +28,9 @@
 \setitemize{noitemsep,topsep=2pt,parsep=6pt,}
 \setlength{\parindent}{0pt}
 
+\let\oldnl\nl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}
+
 \title{IPCV Cheatsheet}
 \author{ArneshRC}
 \date{}
@@ -35,6 +40,7 @@
 \maketitle
 
 \input{partials/introduction.tex}
+\input{partials/enhancement.tex}
 
 \end{document}
 
