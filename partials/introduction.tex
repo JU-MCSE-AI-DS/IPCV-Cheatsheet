@@ -304,3 +304,24 @@ $D$ is a distance function/metrix if:
   \item \textbf{City Block:} $D_4(p, q) = |x - s| + |y - t|$
   \item \textbf{Chessboard:} $D_8(p, q) = \max(|x - s|, |y - t|)$
 \end{itemize}
+
+\subsection*{Fuzzy Objects}
+
+\begin{itemize}
+  \item A 3-D \textbf{cubic grid} is represented by $\mathcal{Z}^3$ ($\mathcal{Z} \rightarrow$ set of integers)
+  \item \textbf{Object} $\mathcal{O}$ is a \textbf{fuzzy subset} $\{p, \mu_0(p) \; | \; p \in \mathcal{Z}^3\}$ ($\mu_0 : \mathcal{Z}^3 \rightarrow [0, 1]$)
+  \item \textbf{Support} $\theta(\mathcal{O}) = \{p \; | \; p \in \mathcal{Z}^3, \mu_0(p) > 0\}$ (set of points with non-zero membership)
+  \item \textbf{Background} $\bar{\theta}(\mathcal{O}) = \mathcal{Z}^3 - \theta(\mathcal{O})$ (set of points with zero membership)
+  \item Images are acquired with finite field of view, so an object always has \textbf{bounded support}.
+\end{itemize}
+
+\subsection*{Path, Link and Length of Path}
+
+\begin{itemize}
+  \item A \textbf{path} $\pi$ in set of points $S$ joining $p$ to $q$ is a sequence $\langle p = p_1, p_2, \ldots, p_l = q \rangle$ such that any two successive points $p_i, p_{i+1}$ are adjacent in $S$.
+  \item A \textbf{link} is a path of length 2
+  \item \textbf{Length of a path} $\pi = \langle p_1, p_2, \ldots, p_l \rangle$ in a fuzzy object $\mathcal{O}$ is defined as:
+    \begin{equation*}
+      \Pi_0(\pi) = \sum_{i=1}^{l-1} \frac{1}{2} \Big(\mu_0(p_i) + \mu_0(p_{i+1})\Big) \; || p_i - p_{i+1} ||
+    \end{equation*}
+\end{itemize}
