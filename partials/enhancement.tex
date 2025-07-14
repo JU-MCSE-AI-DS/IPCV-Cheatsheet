@@ -192,3 +192,202 @@ the background.
     \end{minipage}
 
 \end{itemize}
+
+\subsection*{Neighborhood Operations}
+
+Operations on a \textbf{rectangular region} around a pixel. Any size
+rectangle and any shape filter are possible.
+
+\subsubsection*{Simple Neighborhood Operations}
+
+For any pixel $p$ in an image at the center of a neighborhood:
+
+\begin{itemize}
+  \item \textbf{Min:} Sets $p$ to minimum value in the neighborhood.
+    \begin{itemize}
+      \item Removes small bright spots (\textbf{salt noise})
+      \item Makes \textbf{dark regions darker}
+    \end{itemize}
+  \item \textbf{Max:} Sets $p$ to maximum value in the neighborhood.
+    \begin{itemize}
+      \item Removes small dark spots (\textbf{pepper noise})
+      \item Makes \textbf{bright regions brighter}
+    \end{itemize}
+  \item \textbf{Median:} Sets $p$ to median value in the neighborhood.
+    \begin{itemize}
+      \item Removes \textbf{salt and pepper noise}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Correlation vs Convolution}
+
+Most spatial filtering operations are technically
+\textbf{correlation}, and the filter is referred to as a
+\textbf{correlation kernel} or \textbf{mask}. \textbf{Convolution} is
+a similar operation, with a subtle difference:
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[%
+      imgcell/.style={draw=black, fill=white, minimum size=1cm, anchor=center},
+      filtercell/.style={draw=MaterialBlue900, fill=MaterialBlue50,
+      minimum size=1cm, anchor=center}
+    ]
+
+    % Original image grid
+    \node[imgcell] (i11) at (0,2) {$r_1$};
+    \node[imgcell] (i12) at (1,2) {$r_2$};
+    \node[imgcell] (i13) at (2,2) {$r_3$};
+    \node[imgcell] (i21) at (0,1) {$r_4$};
+    \node[imgcell, fill=MaterialGrey200] (i22) at (1,1) {$r_5$};
+    \node[imgcell] (i23) at (2,1) {$r_6$};
+    \node[imgcell] (i31) at (0,0) {$r_7$};
+    \node[imgcell] (i32) at (1,0) {$r_8$};
+    \node[imgcell] (i33) at (2,0) {$r_9$};
+
+    % Convolution symbol
+    \node at (3,1) {\large $\ast$};
+
+    % Filter grid
+    \node[filtercell] (f11) at (4,2) {$k_1$};
+    \node[filtercell] (f12) at (5,2) {$k_2$};
+    \node[filtercell] (f13) at (6,2) {$k_3$};
+    \node[filtercell] (f21) at (4,1) {$k_4$};
+    \node[filtercell] (f22) at (5,1) {$k_5$};
+    \node[filtercell] (f23) at (6,1) {$k_6$};
+    \node[filtercell] (f31) at (4,0) {$k_7$};
+    \node[filtercell] (f32) at (5,0) {$k_8$};
+    \node[filtercell] (f33) at (6,0) {$k_9$};
+
+  \end{tikzpicture}
+  \caption{An image (left) being operated on by a filter (right). The
+    result depends
+  on whether the operation is correlation or convolution.}
+\end{figure}
+\vspace{-0.5cm}
+\begin{itemize}
+  \item \textbf{Correlation:} The filter is applied directly to the
+    image, without flipping it.
+    \vspace{-0.2cm}
+    \begin{equation*}
+      s = r_1 k_1 + r_2 k_2 + r_3 k_3 + r_4 k_4 + r_5 k_5 + r_6 k_6 +
+      r_7 k_7 + r_8 k_8 + r_9 k_9\\[-0.3cm]
+    \end{equation*}
+  \item \textbf{Convolution:} The filter is flipped both horizontally
+    and vertically before being applied to the image.
+    \vspace{-0.2cm}
+    \begin{equation*}
+      s = r_1 k_9 + r_2 k_8 + r_3 k_7 + r_4 k_6 + r_5 k_5 + r_6 k_4 +
+      r_7 k_3 + r_8 k_2 + r_9 k_1
+    \end{equation*}
+\end{itemize}
+
+\subsubsection*{Linear Spatial Filters}
+
+\begin{equation*}
+  g(x, y) = \sum_{s=-a}^{a} \sum_{t=-b}^{b} w(s, t) f(x + s, y + t)
+\end{equation*}
+
+\begin{itemize}
+  \item \textbf{Smoothing Filters:} Smooths an image by averaging
+    pixel values in the neighborhood.
+    \begin{itemize}
+      \item Simplest form: \textbf{mean filter} or \textbf{simple
+        averaging filter}; $k \times k$ matrix, each
+        element is $1/k^2$.
+
+        \begin{minipage}{\linewidth}
+          \vspace{-0.3cm}
+          \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[%
+                filtercell/.style={draw=MaterialBlue900, fill=MaterialBlue50,
+                minimum size=1cm, anchor=center}
+              ]
+              \node[filtercell] (f11) at (0,2) {$1/9$};
+              \node[filtercell] (f12) at (1,2) {$1/9$};
+              \node[filtercell] (f13) at (2,2) {$1/9$};
+              \node[filtercell] (f21) at (0,1) {$1/9$};
+              \node[filtercell] (f22) at (1,1) {$1/9$};
+              \node[filtercell] (f23) at (2,1) {$1/9$};
+              \node[filtercell] (f31) at (0,0) {$1/9$};
+              \node[filtercell] (f32) at (1,0) {$1/9$};
+              \node[filtercell] (f33) at (2,0) {$1/9$};
+
+            \end{tikzpicture}
+            \caption{Simple 3x3 averaging filter}
+          \end{figure}
+        \end{minipage}
+      \item Sometimes different pixels in the neighborhood are
+        weighted differently (\textbf{weighted averaging filter}).
+        The filter values always add up to 1.
+
+        \begin{minipage}{\linewidth}
+          \vspace{-0.3cm}
+          \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[%
+                filtercell/.style={draw=MaterialBlue900, fill=MaterialBlue50,
+                minimum size=1cm, anchor=center}
+              ]
+              \node[filtercell] (f11) at (0,2) {$1/16$};
+              \node[filtercell] (f12) at (1,2) {$2/16$};
+              \node[filtercell] (f13) at (2,2) {$1/16$};
+              \node[filtercell] (f21) at (0,1) {$2/16$};
+              \node[filtercell] (f22) at (1,1) {$4/16$};
+              \node[filtercell] (f23) at (2,1) {$2/16$};
+              \node[filtercell] (f31) at (0,0) {$1/16$};
+              \node[filtercell] (f32) at (1,0) {$2/16$};
+              \node[filtercell] (f33) at (2,0) {$1/16$};
+
+            \end{tikzpicture}
+            \caption{Weighted 3x3 averaging filter}
+          \end{figure}
+        \end{minipage}
+
+      \item \textbf{Useful for}: (i) removing noise from images (ii)
+        highlighting gross details
+    \end{itemize}
+  \item \textbf{Sharpening Filters:} Enhances edges and fine
+    details in an image.
+    \begin{itemize}
+      \item \textbf{Laplacian Filter:} Highlights regions of rapid
+        intensity change (edges and other discontinuities).
+
+        \begin{minipage}{\linewidth}
+          \vspace{-0.3cm}
+          \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[%
+                filtercell/.style={draw=MaterialBlue900, fill=MaterialBlue50,
+                minimum size=1cm, anchor=center}
+              ]
+              \node[filtercell] (f111) at (0,2) {$0$};
+              \node[filtercell] (f112) at (1,2) {$-1$};
+              \node[filtercell] (f113) at (2,2) {$0$};
+              \node[filtercell] (f121) at (0,1) {$-1$};
+              \node[filtercell] (f122) at (1,1) {$4$};
+              \node[filtercell] (f123) at (2,1) {$-1$};
+              \node[filtercell] (f131) at (0,0) {$0$};
+              \node[filtercell] (f132) at (1,0) {$-1$};
+              \node[filtercell] (f133) at (2,0) {$0$};
+
+              \node[filtercell] (f211) at (4,2) {$0$};
+              \node[filtercell] (f212) at (5,2) {$-1$};
+              \node[filtercell] (f213) at (6,2) {$0$};
+              \node[filtercell] (f221) at (4,1) {$-1$};
+              \node[filtercell] (f222) at (5,1) {$5$};
+              \node[filtercell] (f223) at (6,1) {$-1$};
+              \node[filtercell] (f231) at (4,0) {$0$};
+              \node[filtercell] (f232) at (5,0) {$-1$};
+              \node[filtercell] (f233) at (6,0) {$0$};
+
+            \end{tikzpicture}
+            \caption{Laplacian filter (left), filter which yields
+            Laplacian result subtracted from original image (right)}
+
+          \end{figure}
+        \end{minipage}
+
+    \end{itemize}
+\end{itemize}
