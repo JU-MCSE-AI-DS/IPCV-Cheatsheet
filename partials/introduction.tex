@@ -2,12 +2,18 @@
 
 \subsection*{Digital Images}
 
-A \textbf{digital image} is a representation of a two-dimensional image as a finite $M \times N$ matrix of digital values, called picture elements or \textbf{pixels}.
+A \textbf{digital image} is a representation of a two-dimensional
+image as a finite $M \times N$ matrix of digital values, called
+picture elements or \textbf{pixels}.
 
 \begin{itemize}
-  \item Pixel values typically represent gray levels (often 0 - 255), colours, heights, opacities etc.
-  \item \textit{Digitization} implies that a digital image is an \textbf{approximation} of a real scene.
-  \item Common image formats: (i) one sample per point (B \& W, Grayscale), (ii) three samples per point (RGB), (iii) four samples per point (RGBA).
+  \item Pixel values typically represent gray levels (often 0 - 255),
+    colours, heights, opacities etc.
+  \item \textit{Digitization} implies that a digital image is an
+    \textbf{approximation} of a real scene.
+  \item Common image formats: (i) one sample per point (B \& W,
+    Grayscale), (ii) three samples per point (RGB), (iii) four
+    samples per point (RGBA).
 \end{itemize}
 
 \subsection*{Digital Image Processing}
@@ -15,8 +21,11 @@ A \textbf{digital image} is a representation of a two-dimensional image as a fin
 Two major tasks:
 
 \begin{itemize}
-  \item Improvement of pictorial information for human interpretation. Examples: image enhancement, image restoration.
-  \item Proessing of image data for storage, transmission and representation for autonomous machine perception. Examples: image segmentation, object recognition, image classification.
+  \item Improvement of pictorial information for human
+    interpretation. Examples: image enhancement, image restoration.
+  \item Proessing of image data for storage, transmission and
+    representation for autonomous machine perception. Examples: image
+    segmentation, object recognition, image classification.
 \end{itemize}
 
 \subsubsection*{Image Processing $\rightarrow$ Computer Vision Continuum:}
@@ -25,11 +34,11 @@ Two major tasks:
 %─── First box ───
 \begin{minipage}[t]{0.3\linewidth}
   \begin{tblr}{
-    width   = \linewidth,
-    colspec = { X[c] },
-    row{1}  = { font=\bfseries },
-    hlines, vlines
-  }
+      width   = \linewidth,
+      colspec = { X[c] },
+      row{1}  = { font=\bfseries },
+      hlines, vlines
+    }
     Low-Level Process \\
     \parbox[c][12em][b]{\linewidth}{%
       \textbf{Input}:\\ Image\\
@@ -41,11 +50,11 @@ Two major tasks:
 \end{minipage}\hfill
 \begin{minipage}[t]{0.3\linewidth}
   \begin{tblr}{
-    width   = \linewidth,
-    colspec = { X[c] },
-    row{1}  = { font=\bfseries },
-    hlines, vlines
-  }
+      width   = \linewidth,
+      colspec = { X[c] },
+      row{1}  = { font=\bfseries },
+      hlines, vlines
+    }
     Mid-Level Process \\
     \parbox[c][12em][b]{\linewidth}{%
       \textbf{Input}:\\ Image\\
@@ -57,11 +66,11 @@ Two major tasks:
 \end{minipage}\hfill
 \begin{minipage}[t]{0.3\linewidth}
   \begin{tblr}{
-    width   = \linewidth,
-    colspec = { X[c] },
-    row{1}  = { font=\bfseries },
-    hlines, vlines
-  }
+      width   = \linewidth,
+      colspec = { X[c] },
+      row{1}  = { font=\bfseries },
+      hlines, vlines
+    }
     High-Level Process \\
     \parbox[c][12em][b]{\linewidth}{%
       \textbf{Input}:\\ Attributes\\
@@ -73,7 +82,7 @@ Two major tasks:
 \end{minipage}
 
 \subsubsection*{Key Stages in Digital Image Processing:}
-  
+
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}[
@@ -86,41 +95,51 @@ Two major tasks:
         align=center
       },
       >={Stealth} % arrow tip
-      ]
-      % Row 1
-      \node (n1) {Image Acquisition};
-      \node (n2) [right=of n1] {Image Enhancement};
-      \node (n3) [right=of n2] {Image Restoration};
+    ]
+    % Row 1
+    \node (n1) {Image Acquisition};
+    \node (n2) [right=of n1] {Image Enhancement};
+    \node (n3) [right=of n2] {Image Restoration};
 
-      % Row 2
-      \node (n4) [below=of n3] {Morphological Processing};
-      \node (n5) [left=of n4] {Segmentation};
-      \node (n6) [left=of n5] {Object Recognition};
+    % Row 2
+    \node (n4) [below=of n3] {Morphological Processing};
+    \node (n5) [left=of n4] {Segmentation};
+    \node (n6) [left=of n5] {Object Recognition};
 
-      % Row 3
-      \node (n7) [below=of n6] {Representation \& Description};
-      \node (n8) [right=of n7] {Image Compression};
-      \node (n9) [right=of n8] {Color Image Processing};
+    % Row 3
+    \node (n7) [below=of n6] {Representation \& Description};
+    \node (n8) [right=of n7] {Image Compression};
+    \node (n9) [right=of n8] {Color Image Processing};
 
-      % Sequential arrows
-      \draw[->] (n1) -- (n2);
-      \draw[->] (n2) -- (n3);
-      \draw[->] (n3) -- (n4);
-      \draw[->] (n4) -- (n5);
-      \draw[->] (n5) -- (n6);
-      \draw[->] (n6) -- (n7);
-      \draw[->] (n7) -- (n8);
-      \draw[->] (n8) -- (n9);
+    % Sequential arrows
+    \draw[->] (n1) -- (n2);
+    \draw[->] (n2) -- (n3);
+    \draw[->] (n3) -- (n4);
+    \draw[->] (n4) -- (n5);
+    \draw[->] (n5) -- (n6);
+    \draw[->] (n6) -- (n7);
+    \draw[->] (n7) -- (n8);
+    \draw[->] (n8) -- (n9);
   \end{tikzpicture}
 \end{figure}
 
 \subsection*{Formation of Digital Images}
 
 \begin{enumerate}
-  \item \textbf{Image Acquisition:} Illuminate a scene, absorb the energy reflected by objects in the scene (various examples: (i) x-rays of skeletons, (ii) ultrasounds of unborn babies, (iii) electro-microscopic images of molecules).
-  \item \textbf{Image Sensing:} Energy lands on sensor material responsive to that type of energy, generates a voltage. Collections of sensors are \textbf{arranged} to capture images.
-  \item \textbf{Image Sampling:} Continuous image $\rightarrow$ finite set of values (\enquote{grid of pixels}). Finer sampling $\rightarrow$ more pixels, more detail. \textbf{Determines spatial resolution}.
-  \item \textbf{Image Quantization:} For each pixel, continuous value $\rightarrow$ value from finite set (e.g. whole number in 0 - 255). \textbf{Determines intensity level resolution}.
+  \item \textbf{Image Acquisition:} Illuminate a scene, absorb the
+    energy reflected by objects in the scene (various examples: (i)
+      x-rays of skeletons, (ii) ultrasounds of unborn babies, (iii)
+    electro-microscopic images of molecules).
+  \item \textbf{Image Sensing:} Energy lands on sensor material
+    responsive to that type of energy, generates a voltage.
+    Collections of sensors are \textbf{arranged} to capture images.
+  \item \textbf{Image Sampling:} Continuous image $\rightarrow$
+    finite set of values (\enquote{grid of pixels}). Finer sampling
+    $\rightarrow$ more pixels, more detail. \textbf{Determines
+    spatial resolution}.
+  \item \textbf{Image Quantization:} For each pixel, continuous value
+    $\rightarrow$ value from finite set (e.g. whole number in 0 -
+    255). \textbf{Determines intensity level resolution}.
 \end{enumerate}
 
 \subsection*{Relationships between Pixels}
@@ -131,18 +150,19 @@ For a pixel $p$ at position $(x, y)$:
 
 \begin{itemize}
   \item \textbf{$N_4$:} $(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)$.
-  \item \textbf{$N_D$:} $(x + 1, y + 1), (x - 1, y + 1), (x + 1, y - 1), (x - 1, y - 1)$.
+  \item \textbf{$N_D$:} $(x + 1, y + 1), (x - 1, y + 1), (x + 1, y -
+    1), (x - 1, y - 1)$.
   \item \textbf{$N_8$:} $N_4 \cup N_D$.
-  
+
 \end{itemize}
 
 \noindent
 \begin{minipage}{0.3\linewidth}
   \begin{tblr}{
-    hlines, vlines,
-    colspec={c},
-    row{1}={font=\bfseries, c, m}
-  }
+      hlines, vlines,
+      colspec={c},
+      row{1}={font=\bfseries, c, m}
+    }
     4-neighbors \\
     \begin{tikzpicture}[scale=0.6]
       \draw[step=1,gray,very thin] (-1.5,-1.5) grid (2.5,2.5);
@@ -156,10 +176,10 @@ For a pixel $p$ at position $(x, y)$:
 \end{minipage}\hfill
 \begin{minipage}{0.3\linewidth}
   \begin{tblr}{
-    hlines, vlines,
-    colspec={c},
-    row{1}={font=\bfseries, c, m}
-  }
+      hlines, vlines,
+      colspec={c},
+      row{1}={font=\bfseries, c, m}
+    }
     D-neighbors \\
     \begin{tikzpicture}[scale=0.6]
       \draw[step=1,gray,very thin] (-1.5,-1.5) grid (2.5,2.5);
@@ -173,10 +193,10 @@ For a pixel $p$ at position $(x, y)$:
 \end{minipage}\hfill
 \begin{minipage}{0.3\linewidth}
   \begin{tblr}{
-    hlines, vlines,
-    colspec={c},
-    row{1}={font=\bfseries, c, m}
-  }
+      hlines, vlines,
+      colspec={c},
+      row{1}={font=\bfseries, c, m}
+    }
     8-neighbors \\
     \begin{tikzpicture}[scale=0.6]
       \draw[step=1,gray,very thin] (-1.5,-1.5) grid (2.5,2.5);
@@ -199,16 +219,17 @@ For two pixels $p$ and $q$:
 \begin{itemize}
   \item \textbf{4-adjacency:} $q \in N_4(p)$
   \item \textbf{8-adjacency:} $q \in N_8(p)$
-  \item \textbf{m-adjacency:} (i) $q \in N_4(p)$ \textbf{or} (ii) $q \in N_D(p)$ and $N_4(p) \cap N_4(q) \nsubseteq \mathbf{V}$
+  \item \textbf{m-adjacency:} (i) $q \in N_4(p)$ \textbf{or} (ii) $q
+    \in N_D(p)$ and $N_4(p) \cap N_4(q) \nsubseteq \mathbf{V}$
 \end{itemize}
 
 \noindent
 \begin{minipage}{0.3\linewidth}
   \begin{tblr}{
-    hlines, vlines,
-    colspec={c},
-    row{1}={font=\bfseries, c, m}
-  }
+      hlines, vlines,
+      colspec={c},
+      row{1}={font=\bfseries, c, m}
+    }
     4-adjacency \\
     \begin{tikzpicture}[scale=0.6]
       % grid and pixel array
@@ -225,10 +246,10 @@ For two pixels $p$ and $q$:
 \end{minipage}\hfill
 \begin{minipage}{0.3\linewidth}
   \begin{tblr}{
-    hlines, vlines,
-    colspec={c},
-    row{1}={font=\bfseries, c, m}
-  }
+      hlines, vlines,
+      colspec={c},
+      row{1}={font=\bfseries, c, m}
+    }
     8-adjacency \\
     \begin{tikzpicture}[scale=0.6]
       % grid and pixel array
@@ -247,10 +268,10 @@ For two pixels $p$ and $q$:
 \end{minipage}\hfill
 \begin{minipage}{0.3\linewidth}
   \begin{tblr}{
-    hlines, vlines,
-    colspec={c},
-    row{1}={font=\bfseries, c, m}
-  }
+      hlines, vlines,
+      colspec={c},
+      row{1}={font=\bfseries, c, m}
+    }
     m-adjacency \\
     \begin{tikzpicture}[scale=0.6]
       % grid and pixel array
@@ -271,19 +292,22 @@ For two pixels $p$ and $q$:
 \subsubsection*{Connectivity}
 
 \begin{itemize}
-  \item Pixels $p, q$ connected in $S$ if there exists a path joining them consisting entirely of pixels in $S$.
-  \item For any pixel $p \in S$, the set of pixels connected to $p$ in $S$ is called a \textbf{connected component} of $S$.
+  \item Pixels $p, q$ connected in $S$ if there exists a path joining
+    them consisting entirely of pixels in $S$.
+  \item For any pixel $p \in S$, the set of pixels connected to $p$
+    in $S$ is called a \textbf{connected component} of $S$.
   \item $S$ is a \textbf{connected set} iff it has only one connected component.
 \end{itemize}
 
 \subsubsection*{Region}
 
-A subset $R$ of pixels in an image is a \textbf{region} if $R$ is a connected set.
-
+A subset $R$ of pixels in an image is a \textbf{region} if $R$ is a
+connected set.
 
 \subsubsection*{Boundary}
 
-Set of pixels in a region $R$ that have at leasst one neighbor outside $R$. Also known as (i) \textbf{border} or (ii) \textbf{contour}.
+Set of pixels in a region $R$ that have at leasst one neighbor
+outside $R$. Also known as (i) \textbf{border} or (ii) \textbf{contour}.
 
 \subsubsection*{Distance Measures}
 
@@ -308,20 +332,30 @@ $D$ is a distance function/metrix if:
 \subsection*{Fuzzy Objects}
 
 \begin{itemize}
-  \item A 3-D \textbf{cubic grid} is represented by $\mathcal{Z}^3$ ($\mathcal{Z} \rightarrow$ set of integers)
-  \item \textbf{Object} $\mathcal{O}$ is a \textbf{fuzzy subset} $\{p, \mu_0(p) \; | \; p \in \mathcal{Z}^3\}$ ($\mu_0 : \mathcal{Z}^3 \rightarrow [0, 1]$)
-  \item \textbf{Support} $\theta(\mathcal{O}) = \{p \; | \; p \in \mathcal{Z}^3, \mu_0(p) > 0\}$ (set of points with non-zero membership)
-  \item \textbf{Background} $\bar{\theta}(\mathcal{O}) = \mathcal{Z}^3 - \theta(\mathcal{O})$ (set of points with zero membership)
-  \item Images are acquired with finite field of view, so an object always has \textbf{bounded support}.
+  \item A 3-D \textbf{cubic grid} is represented by $\mathcal{Z}^3$
+    ($\mathcal{Z} \rightarrow$ set of integers)
+  \item \textbf{Object} $\mathcal{O}$ is a \textbf{fuzzy subset}
+    $\{p, \mu_0(p) \; | \; p \in \mathcal{Z}^3\}$ ($\mu_0 :
+    \mathcal{Z}^3 \rightarrow [0, 1]$)
+  \item \textbf{Support} $\theta(\mathcal{O}) = \{p \; | \; p \in
+    \mathcal{Z}^3, \mu_0(p) > 0\}$ (set of points with non-zero membership)
+  \item \textbf{Background} $\bar{\theta}(\mathcal{O}) =
+    \mathcal{Z}^3 - \theta(\mathcal{O})$ (set of points with zero membership)
+  \item Images are acquired with finite field of view, so an object
+    always has \textbf{bounded support}.
 \end{itemize}
 
 \subsection*{Path, Link and Length of Path}
 
 \begin{itemize}
-  \item A \textbf{path} $\pi$ in set of points $S$ joining $p$ to $q$ is a sequence $\langle p = p_1, p_2, \ldots, p_l = q \rangle$ such that any two successive points $p_i, p_{i+1}$ are adjacent in $S$.
+  \item A \textbf{path} $\pi$ in set of points $S$ joining $p$ to $q$
+    is a sequence $\langle p = p_1, p_2, \ldots, p_l = q \rangle$
+    such that any two successive points $p_i, p_{i+1}$ are adjacent in $S$.
   \item A \textbf{link} is a path of length 2
-  \item \textbf{Length of a path} $\pi = \langle p_1, p_2, \ldots, p_l \rangle$ in a fuzzy object $\mathcal{O}$ is defined as:
+  \item \textbf{Length of a path} $\pi = \langle p_1, p_2, \ldots,
+    p_l \rangle$ in a fuzzy object $\mathcal{O}$ is defined as:
     \begin{equation*}
-      \Pi_0(\pi) = \sum_{i=1}^{l-1} \frac{1}{2} \Big(\mu_0(p_i) + \mu_0(p_{i+1})\Big) \; || p_i - p_{i+1} ||
+      \Pi_0(\pi) = \sum_{i=1}^{l-1} \frac{1}{2} \Big(\mu_0(p_i) +
+      \mu_0(p_{i+1})\Big) \; || p_i - p_{i+1} ||
     \end{equation*}
 \end{itemize}
