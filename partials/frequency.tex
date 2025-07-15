@@ -81,11 +81,13 @@ Let us define $D(u, v) = \sqrt{(u - \frac{M}{2})^2 + (v -
 of the transform. Frequency domain filters are functions of $D(u, v)$.
 
 \begin{itemize}
-  \item \textbf{Smoothing filters:} In frequency domain, smoothing is achieved by dropping out the high frequency components.
+  \item \textbf{Smoothing filters:} In frequency domain, smoothing is
+    achieved by dropping out the high frequency components.
     \begin{itemize}
       \item \textbf{Ideal low-pass filter:} Simply cut off all high
         frequency components that are a specified distance $D_0$ from the
-        origin of the transform. Changing $D_0$ changes the behavior of the filter.
+        origin of the transform. Changing $D_0$ changes the behavior
+        of the filter.
 
         \begin{minipage}{\linewidth}
           \begin{figure}[H]
@@ -145,7 +147,8 @@ of the transform. Frequency domain filters are functions of $D(u, v)$.
               \end{figure}
             \end{minipage}
 
-          \item Gaussian filters can also \textbf{remove blemishes in photographs}
+          \item Gaussian filters can also \textbf{remove blemishes in
+            photographs}
 
             \begin{minipage}{\linewidth}
               \vspace{-0.4cm}
@@ -157,11 +160,14 @@ of the transform. Frequency domain filters are functions of $D(u, v)$.
             \end{minipage}
         \end{itemize}
     \end{itemize}
-    
-  \item \textbf{Sharpening filters:} Edges and fine details are associated with high frequency components.
+
+  \item \textbf{Sharpening filters:} Edges and fine details are
+    associated with high frequency components.
 
     \begin{itemize}
-      \item \textbf{Ideal high-pass filter:} Cut off all low frequency components that are a specified distance $D_0$ from the origin of the transform.
+      \item \textbf{Ideal high-pass filter:} Cut off all low
+        frequency components that are a specified distance $D_0$ from
+        the origin of the transform.
 
         \begin{minipage}{\linewidth}
           \begin{figure}[H]
@@ -214,16 +220,21 @@ of the transform. Frequency domain filters are functions of $D(u, v)$.
 \subsection*{Fast Fourier Transform (FFT)}
 
 \begin{itemize}
-  \item DFT is computationally expensive, with a time complexity of $O((MN)^2)$, where M and N are the dimensions of the image
-  \item \textbf{Fast Fourier Transform (FFT)} allows the Fourier transform to be carried out in a reasonable amount of time
-  \item It reduces the amount of time required to complete a Fourier transform by a factor of \textbf{100 - 600 times}!
-  \item FFT is the reason why Fourier based techniques have gained popularity in image processing
+  \item DFT is computationally expensive, with a time complexity of
+    $O((MN)^2)$, where M and N are the dimensions of the image
+  \item \textbf{Fast Fourier Transform (FFT)} allows the Fourier
+    transform to be carried out in a reasonable amount of time
+  \item It reduces the amount of time required to complete a Fourier
+    transform by a factor of \textbf{100 - 600 times}!
+  \item FFT is the reason why Fourier based techniques have gained
+    popularity in image processing
 \end{itemize}
-  
+
 \subsection*{Spatial vs Frequency Domain}
 
 \begin{itemize}
   \item Similar jobs can be done in both spatial and frequency domains
   \item Filtering in the spatial domain can be easier to understand
-  \item Filtering in the frequency domain can be much faster – especially for large images
+  \item Filtering in the frequency domain can be much faster –
+    especially for large images
 \end{itemize}
