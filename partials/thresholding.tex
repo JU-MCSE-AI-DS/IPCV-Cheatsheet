@@ -28,10 +28,14 @@ into two distinct peaks.
       successive iterations is less than
   a predefined limit} $T_{\infty}$}{
     Segment the image using $T$ to produce two groups of pixels:
-    $G_{1}$ consisting of pixels with grey levels $>T$ and $G_{2}$
-    consisting pixels with grey levels $\le T$\;
-    Compute the average grey levels of pixels in $G_{1}$ to give
-    $\mu_{1}$ and $G_{2}$ to give $\mu_{2}$\;
+    \begin{itemize}[noitemsep,nolistsep]
+      \item $G_{1}$ pixels with grey levels $\geq T$
+      \item $G_{2}$ pixels with grey levels $< T$
+    \end{itemize} \;
+    \vspace{-0.6em}
+    $\mu_1$ = $\sum_{z_1 \in G_1} z_1 / |G_1|$ \\
+    $\mu_2$ = $\sum_{z_2 \in G_2} z_2 / |G_2|$ \;
+    \vspace{0.6em}
     Compute a new threshold value: $T = (\mu_{1} + \mu_{2})/2$\;
   }
   \caption{Iterative threshold selection}
@@ -59,6 +63,6 @@ into two distinct peaks.
 \begin{itemize}
   \item For handling situations in which single value thresholding will not work
   \item Divide an image into sub images and threshold these individually
-  \item Since the threshold for each pixel depends on its location within an image this technique is said to \textbf{adaptive}
+  \item Since the threshold for each pixel depends on its location
+    within an image this technique is said to \textbf{adaptive}
 \end{itemize}
-
