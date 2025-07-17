@@ -40,7 +40,8 @@ $s$ is positioned with origin at $(x, y)$ and the new pixel value becomes:
   \centering
   \includegraphics[width=\linewidth]{images/erosion.png}
   \includegraphics[width=0.18\linewidth]{images/erosion_structuring_element.png}
-  \caption{Erosion of a binary image with a plus shaped structuring element; note: \textbf{the boundary shrinks}!}
+  \caption{Erosion of a binary image with a plus shaped structuring
+  element; note: \textbf{the boundary shrinks}!}
 \end{figure}
 
 \subsubsection*{Applications}
@@ -63,7 +64,7 @@ $s$ is positioned with origin at $(x, y)$ and the new pixel value becomes:
         \includegraphics[width=0.7\linewidth]{images/erosion_extrusions.png}
       \end{figure}
     \end{minipage}
-\end{itemize}    
+\end{itemize}
 
 \subsection*{Dilation}
 
@@ -83,7 +84,8 @@ $s$ is positioned with origin at $(x, y)$ and the new pixel value becomes:
   \centering
   \includegraphics[width=\linewidth]{images/dilation.png}
   \includegraphics[width=0.18\linewidth]{images/dilation_structuring_element.png}
-  \caption{Dilation of a binary image with a plus shaped structuring element; note: \textbf{the boundary expands}!}
+  \caption{Dilation of a binary image with a plus shaped structuring
+  element; note: \textbf{the boundary expands}!}
 \end{figure}
 
 \subsubsection*{Applications}
@@ -107,11 +109,11 @@ $s$ is positioned with origin at $(x, y)$ and the new pixel value becomes:
       \end{figure}
     \end{minipage}
 \end{itemize}
-  
 
 \subsection*{Opening}
 
-\textbf{Compound operation} of erosion followed by dilation. Separates objects while preserving their size.
+\textbf{Compound operation} of erosion followed by dilation.
+Separates objects while preserving their size.
 
 \begin{equation*}
   f \circ s = (f \ominus s) \oplus s
@@ -126,7 +128,8 @@ $s$ is positioned with origin at $(x, y)$ and the new pixel value becomes:
 
 \subsection*{Closing}
 
-\textbf{Compound operation} of dilation followed by erosion. Fills small holes while preserving the size of objects.
+\textbf{Compound operation} of dilation followed by erosion. Fills
+small holes while preserving the size of objects.
 
 \begin{equation*}
   f \bullet s = (f \oplus s) \ominus s
@@ -139,11 +142,13 @@ $s$ is positioned with origin at $(x, y)$ and the new pixel value becomes:
   \caption{Closing of a binary image with a plus shaped structuring element}
 \end{figure}
 
-\textbf{Note}: \enquote{Morphological open-close} is a fairly common operation, which is simply \textbf{opening followed by closing}.
+\textbf{Note}: \enquote{Morphological open-close} is a fairly common
+operation, which is simply \textbf{opening followed by closing}.
 
 \subsection*{Region Filling}
 
-\textbf{Goal:} Given a pixel inside a boundary, attempt to fill the boundary with \textbf{object pixels} (1's).
+\textbf{Goal:} Given a pixel inside a boundary, attempt to fill the
+boundary with \textbf{object pixels} (1's).
 
 \begin{equation*}
   X_k = (X_{k-1} \oplus B) \cap A^c
@@ -151,7 +156,9 @@ $s$ is positioned with origin at $(x, y)$ and the new pixel value becomes:
 
 $k = 1, 2, \ldots 3$
 
-(i) $X_0 \rightarrow$ simply the starting point inside the boundary, (ii) $B \rightarrow$ simple structuring element and (iii) $A^c \rightarrow$ complement of A
+(i) $X_0 \rightarrow$ simply the starting point inside the boundary,
+(ii) $B \rightarrow$ simple structuring element and (iii) $A^c
+\rightarrow$ complement of A
 
 Equation's applied repeatedly until $X_k$ is equal to $X_{k-1}$
 
@@ -163,8 +170,12 @@ Equation's applied repeatedly until $X_k$ is equal to $X_{k-1}$
 
 \subsubsection*{Applications}
 \begin{itemize}
-  \item Forensic and biometric fingerprint enhancement: filling spurious gaps in binarized fingerprint images, ensuring continuous ridge structures
-  \item Filling in concavities in CT images (such as pleural lesions and eliminate internal cavities caused by respiratory motion specifically in pulmonary CT images) prior to segmentation
+  \item Forensic and biometric fingerprint enhancement: filling
+    spurious gaps in binarized fingerprint images, ensuring
+    continuous ridge structures
+  \item Filling in concavities in CT images (such as pleural lesions
+      and eliminate internal cavities caused by respiratory motion
+    specifically in pulmonary CT images) prior to segmentation
 \end{itemize}
 
 \subsection*{Boundary Extraction}
@@ -175,7 +186,9 @@ The boundary is simply given by:
   \beta(A) = A - A \ominus B
 \end{equation*}
 
-\textbf{Intuition:} $A \ominus B$ removes the boundary of $A$ by eroding it with $B$, and then we subtract the eroded image from the original image to get the boundary.
+\textbf{Intuition:} $A \ominus B$ removes the boundary of $A$ by
+eroding it with $B$, and then we subtract the eroded image from the
+original image to get the boundary.
 
 \begin{figure}[H]
   \centering
@@ -186,6 +199,9 @@ The boundary is simply given by:
 \subsubsection*{Applications}
 
 \begin{itemize}
-  \item Optical Character Recognition (OCR) preprocessing: to delineate the contours of text characters, enabling accurate segmentation of connected characters before recognition
-  \item Isolating inner and outer boundaries of blood vessel walls in vascular images; useful for measuring arterial lumen and wall thickness
+  \item Optical Character Recognition (OCR) preprocessing: to
+    delineate the contours of text characters, enabling accurate
+    segmentation of connected characters before recognition
+  \item Isolating inner and outer boundaries of blood vessel walls in
+    vascular images; useful for measuring arterial lumen and wall thickness
 \end{itemize}
