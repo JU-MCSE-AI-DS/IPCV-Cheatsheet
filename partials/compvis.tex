@@ -1,0 +1,128 @@
+\section*{Computer Vision}
+
+Making computers understand images and videos.
+
+\subsection*{Applications}
+
+\begin{itemize}
+  \item \textbf{Face detection:} Locates faces in images or video.
+    For instance, smartphone cameras autofocus on detected faces
+    
+  \item \textbf{Face recognition:} Identifies or verifies a person
+    via facial features. Airports use it to match travelers to their
+    passport photos
+  \item \textbf{Face landmark alignment:} Detects facial keypoints
+    (eyes, nose, mouth) to align faces. Used in selfie apps to apply
+    filters precisely.
+  \item \textbf{Smile detection (smile-shot):} Detects when someone
+    smiles to automatically trigger a photo capture. Camera apps take
+    a shot when the user smiles.
+  \item \textbf{Vision-based biometrics:} Uses visual cues (face,
+    gait, iris) to authenticate individuals. Some phones unlock via
+    facial recognition.
+  \item \textbf{OCR:} Extracts text from images or scans. Apps like
+    Google Lens convert photographed signs into editable text.
+  \item \textbf{Vision in sports:} Tracks players and ball movement
+    for analytics. Broadcasts overlay real‑time player stats on live games.
+  \item \textbf{Vision for photo organization:} Automatically tags
+    and groups images by subject or event. Google Photos groups all
+    beach pictures together.
+  \item \textbf{Earth viewers (3D modeling):} Builds 3D maps of Earth
+    from satellite/drone imagery. Google Earth renders 3D cities from
+    aerial photos.
+  \item \textbf{Making 3D from multiple images:} Reconstructs 3D
+    models from photos taken at different angles. Archaeologists
+    create 3D scans of ruins via photo sets.
+  \item \textbf{First‑person hyperlapse videos:} Speeds up
+    head‑mounted camera footage smoothly. GoPro users create
+    time‑lapse walking videos with stabilized motion.
+  \item \textbf{3D timelapse from internet photos:} Builds 3D
+    time‑lapse from crowdsourced images. Projects reconstruct how a
+    landmark changes over years from Flickr photos.
+  \item \textbf{Style transfer:} Applies the artistic style of one
+    image onto another. Apps let you turn your photos into Van
+    Gogh‑style paintings
+  \item \textbf{SFX – shape capture:} Scans and captures 3D shapes
+    for visual effects. VFX teams scan actors’ faces to create
+    digital doubles in films.
+  \item \textbf{SFX – motion capture:} Records body movements to
+    animate digital characters. Movies like Avatar use mocap suits to
+    animate CGI characters
+  \item \textbf{Google cars:} Uses cameras and sensors to map streets
+    and detect objects. Street View cars capture panoramic images of
+    roads worldwide.
+  \item \textbf{Interactive games (Kinect):} Tracks full‑body
+    movement for game control. Xbox Kinect enables players to use
+    gestures instead of controllers.
+  \item \textbf{Vision in space:} Uses computer vision for spacecraft
+    navigation and planetary mapping. Rovers on Mars identify rocks
+    and avoid obstacles.
+  \item \textbf{Industrial robotics:} Enables robots to see parts,
+    navigate, and assemble products. Factory arms pick parts from a
+    conveyor belt using vision.
+  \item \textbf{Mobile robots:} Allows robots to navigate dynamic
+    environments using cameras. Vacuums like Roomba avoid obstacles
+    and map rooms visually.
+  \item \textbf{Medical imaging:} Analyzes scans (X‑ray, MRI) to
+    detect diseases. AI flags tumors in mammograms to assist
+    radiologists
+\end{itemize}
+
+\subsection*{Challenges}
+
+\begin{itemize}
+  \item \textbf{Illumination:} Variations in lighting can change how
+    objects appear in images. For example, a face in sunlight vs.
+    shadow may be hard to recognize as the same person.
+
+  \item \textbf{Object pose:} Changes in an object's orientation or
+    position affect how it looks. A car seen from the front looks
+    very different than from the side.
+
+  \item \textbf{Clutter:} Multiple objects or background noise can
+    confuse object recognition. A messy desk can make it hard to
+    detect a single pen.
+
+  \item \textbf{Occlusions:} Objects may be partially blocked by
+    others in the scene. A person behind a wall may only have their
+    head visible.
+
+  \item \textbf{Intra-class appearance:} Items from the same category
+    can look quite different. Chairs can have very different shapes
+    and materials.
+
+  \item \textbf{Viewpoint:} The camera angle affects what parts of an
+    object are visible. A top-down view of a cup shows a different
+    shape than a side view.
+\end{itemize}
+
+\subsection*{Framework for Computer Vision}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[
+      node distance=1cm,
+      every node/.style={
+        minimum width=4cm,
+        align=center,
+        minimum height=1cm
+      },
+      arrow/.style={->, thick}
+    ]
+    % Nodes
+    \node[draw, fill=gray!20]        (A) {Grey Level Image};
+    \node[draw, below=of A]          (B) {Edge Points};
+    \node[draw, below=of B]          (C) {Lines \& Boundaries};
+    \node[draw, below=of C]          (D) {Shapes};
+    \node[draw, below=of D, fill=MaterialGreen100] (E) {Organisation};
+    \node[draw, below=of E, fill=MaterialRed100]   (F) {Recognition};
+
+    % Arrows with labels
+    \draw[arrow] (A) -- node[left, align=center] {Spatial Gradient\\Operators} (B);
+    \draw[arrow] (B) -- node[left] {Thinning \& Linking}            (C);
+    \draw[arrow] (C) -- node[left] {Feature Extraction}             (D);
+    \draw[arrow] (D) --                                         (E);
+    \draw[arrow] (E) -- node[left] {Real World Knowledge}          (F);
+  \end{tikzpicture}
+  \caption{From grey‐level image to recognition via a hierarchy of features}
+\end{figure}
