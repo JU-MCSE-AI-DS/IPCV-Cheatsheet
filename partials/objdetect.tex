@@ -1,0 +1,79 @@
+\section*{Object Detection Techniques}
+
+\subsection*{Basic Thresholding}
+\enquote{Pixel‐level segmentation}; grayscale image $\rightarrow$ a binary image by selecting a threshold value \(T\)
+
+\textbf{Examples:}
+\begin{itemize}
+  \item \textbf{Fixed threshold:} segmenting bright objects against dark background by choosing \(T\) manually.
+  \item \textbf{Otsu's method:} automatically computes \(T\) by minimizing intra‐class variance.
+\end{itemize}
+
+\textbf{Advantage:} Extremely fast and easy to implement; works well when object and background intensities are well separated.
+
+\textbf{Disadvantage:} Fails under uneven illumination or low contrast; requires manual tuning or assumes bimodal histogram.
+
+\subsection*{Simple Template Matching}
+Simple template matching slides a small “template” image over the input and computes a similarity metric (e.g.\ normalized cross‐correlation) at each location, identifying best matches.
+
+\textbf{Examples:}
+\begin{itemize}
+  \item Detecting a known logo in a scene by matching a logo patch.
+  \item Finding coins on a uniform table by matching a coin‐shaped template.
+\end{itemize}
+
+\textbf{Advantage:} Conceptually straightforward; no training data required.
+
+\textbf{Disadvantage:} Sensitive to scale, rotation, and illumination changes; computationally expensive for large search areas.
+
+\subsection*{Fourier Transform Template Matching}
+Fourier‐based template matching accelerates convolution‐like matching by transforming both image and template into the frequency domain, multiplying them, and inverse transforming the result.
+\begin{align*}
+I \otimes T &= \sum_{(x,y)\in W} I_{x,y}\,T_{x+i,y+j} \\ 
+&= F^{-1}\bigl(F(I)\times F(-T)\bigr)
+\end{align*}
+
+\textbf{Examples:}
+\begin{itemize}
+  \item Real‐time detection of a watermark pattern using fast FFT‐based convolution.
+  \item Matching repetitive textures (e.g.\ bricks) across large images efficiently.
+\end{itemize}
+
+\textbf{Advantage:} No sliding of templates here.
+
+\textbf{Disadvantage:} Cost is 2×FFT plus multiplication.
+
+\subsection*{Hough Transform}
+The Hough Transform votes in a parameter space to detect shapes (e.g.\ lines) by transforming edge points into curve families; peaks in the accumulator correspond to detected shapes.
+
+\textbf{Examples:}
+\begin{itemize}
+  \item Line detection in road lane‐marking images.
+  \item Circle detection for identifying round objects (using the circle Hough variant).
+\end{itemize}
+
+\textbf{Advantage:} Robust to noise and partial occlusion; can detect multiple instances of a shape in one pass.
+
+\textbf{Disadvantage:} High memory and computational cost for large parameter spaces.
+
+\begin{algorithm}[ht]
+\SetAlgoLined
+\KwData{Edge image, threshold}
+accum \(\gets\) 0\;
+\For{\textnormal{all pixels } \((x,y)\)}{
+  \If{\(\textnormal{edge}(y,x) > \textnormal{threshold}\)}{
+    \For{\(m = -10\) \KwTo \(+10\)}{
+      \(c \gets -\,x\,m + y\)\;
+      \(\textnormal{accum}(m,c) \gets \textnormal{accum}(m,c) + 1\)\;
+    }
+  }
+}
+\((m,c) \gets \arg\max \text{accum}\)\;
+\caption{Hough Transform for Lines}
+\end{algorithm}
+
+\textbf{Problem for Cartesian Parameterisation:} As slope \(m\) grows, \(m,c\) tend to infinity, making accumulator limits impractical.
+
+\textbf{Solution (Polar Parameterisation):}  
+Use the normal‐foot parameter \(\rho = x\cos\theta + y\sin\theta\), yielding the polar Hough transform for lines in \((\rho,\theta)\) space.
+
