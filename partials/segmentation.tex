@@ -165,16 +165,7 @@ Note: Derivative-based edge detectors are \textbf{extremely sensitive to noise}.
             minimum size=1cm, anchor=center}
           ]
           % G_x
-          \node[filtercell] (p111) at (0,2) {$-1$};
-          \node[filtercell] (p112) at (1,2) {$-1$};
-          \node[filtercell] (p113) at (2,2) {$-1$};
-          \node[filtercell] (p121) at (0,1) {$0$};
-          \node[filtercell] (p122) at (1,1) {$0$};
-          \node[filtercell] (p123) at (2,1) {$0$};
-          \node[filtercell] (p131) at (0,0) {$1$};
-          \node[filtercell] (p132) at (1,0) {$1$};
-          \node[filtercell] (p133) at (2,0) {$1$};
-          % G_y
+      
           \node[filtercell] (p211) at (4,2) {$-1$};
           \node[filtercell] (p212) at (5,2) {$0$};
           \node[filtercell] (p213) at (6,2) {$1$};
@@ -184,6 +175,17 @@ Note: Derivative-based edge detectors are \textbf{extremely sensitive to noise}.
           \node[filtercell] (p231) at (4,0) {$-1$};
           \node[filtercell] (p232) at (5,0) {$0$};
           \node[filtercell] (p233) at (6,0) {$1$};
+          % G_y
+          \node[filtercell] (p111) at (0,2) {$-1$};
+          \node[filtercell] (p112) at (1,2) {$-1$};
+          \node[filtercell] (p113) at (2,2) {$-1$};
+          \node[filtercell] (p121) at (0,1) {$0$};
+          \node[filtercell] (p122) at (1,1) {$0$};
+          \node[filtercell] (p123) at (2,1) {$0$};
+          \node[filtercell] (p131) at (0,0) {$1$};
+          \node[filtercell] (p132) at (1,0) {$1$};
+          \node[filtercell] (p133) at (2,0) {$1$};
+          
         \end{tikzpicture}
         \caption{Prewitt filters for $G_x$ (left) and $G_y$ (right)}
       \end{figure}
